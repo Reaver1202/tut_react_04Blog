@@ -5,6 +5,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/app';
 import PostsIndex from './components/posts_index';
 import PostsNew from './components/posts_new';
+import PostsShow from './components/posts_show';
 
 // functional component
 const Greeting = () =>  {
@@ -19,5 +20,6 @@ export default (
     <IndexRoute component={PostsIndex} />         // ../          App, PostsIndex
     <Route path="greet" component={Greeting} />   // ../greet     App, Greeting
     <Route path="posts/new" component={PostsNew} />   // ../greet     App, Greeting
+    <Route path="posts/:id" component={PostsShow} /> // this.props.params.id  --> params says, that there are parameters in URL
   </Route>
 );
