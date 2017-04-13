@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-// delete App
+// delete App --> because of Router
 //import App from './components/app';
 import reducers from './reducers';
 
@@ -16,7 +16,14 @@ import { Router, browserHistory } from 'react-router';
 // define available routes:
 import routes from './routes';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+// add promise as middleware
+// makes sure, that all of our action flow through the "promise"-middleware before reaching "producers"
+import promise from 'redux-promise';
+
+
+const createStoreWithMiddleware = applyMiddleware(
+  promise
+)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
